@@ -1,0 +1,132 @@
+package Sorting;
+
+import java.util.Scanner;
+
+public class SelectionSorts {
+	
+	public static void selectionSort(int[] arr) {
+		int n = arr.length;
+		for (int i = 0; i < n - 1; i++) {
+			int minIndex = i;
+			for (int j = i + 1; j < n; j++) {
+				if (isSmaller(arr, j, minIndex)) {
+					minIndex = j;
+				}
+			}
+			swap(arr, i, minIndex);
+		}
+	}
+	
+	public static void swap(int[] arr, int i, int j) {
+		System.out.println("Swapping " + arr[i] + " and " + arr[j]);
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	
+	public static boolean isSmaller(int[] arr, int i, int j) {
+		System.out.println("Comparing " + arr[i] + " and " + arr[j]);
+		return arr[i] < arr[j];
+	}
+	
+	public static void printArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Scanner s= new Scanner(System.in);
+		int n = s.nextInt();
+		int []arr = new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]= s.nextInt();
+			
+		}
+		
+		
+		selectionSort(arr);
+		printArray(arr);
+	}
+	}
+
+
+
+package Sorting;
+import java.io.*;
+import java.util.*;
+
+
+public class MerageSort {
+	
+	public static int[] mergeTwoSortedArrays(int[] a, int[] b) {
+		int[] res = new int[a.length + b.length];
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		
+		while (i < a.length && j < b.length) {
+			if (a[i] < b[j]) {
+				res[k] = a[i];
+				i++;
+			} else {
+				res[k] = b[j];
+				j++;
+			}
+			k++;
+		}
+		
+		while (i < a.length) {
+			res[k] = a[i];
+			i++;
+			k++;
+		}
+		
+		while (j < b.length) {
+			res[k] = b[j];
+			j++;
+			k++;
+		}
+		
+		return res;
+	}
+	
+	public static void print(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i]);
+			if (i < arr.length - 1) {
+				System.out.print(" ");
+			}
+		}
+		System.out.println(); // Print a newline at the end.
+	}
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int[] a = new int[n];
+		for (int i = 0; i < n; i++) {
+			a[i] = s.nextInt();
+		}
+		
+		int m = s.nextInt();
+		int[] b = new int[m];
+		for (int i = 0; i < m; i++) {
+			b[i] = s.nextInt();
+		}
+		
+		int[] mergedArrays = mergeTwoSortedArrays(a, b);
+		print(mergedArrays);
+	}
+
+}
+//package Sorting;
+//import java.io.*;
+//import java.util.*;
+//
+//public class MergeSort {
+//	
+//	
+//}
+
