@@ -1,75 +1,58 @@
-package Arrays;
+package BasicJavaProgram;
+
 import java.util.Scanner;
 
-public class FindUniqueElements {
-    public static int findUnique(int[] arr){
-        int res = arr[0];
+public class BinaryToDecimal {
+	public static void main(String[] args) {
+		
+		Scanner s= new Scanner(System.in);
+		int n=s.nextInt();
 
-        for (int i = 1; i < arr.length; i++) {
-            res = res ^ arr[i];
-        }
-        return res;
-    }
+		int x=1;
+		int ans=0;
+    int y=0;
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter the number of elements in the array: ");
-        int n = scanner.nextInt();
-        
-        int[] arr = new int[n];
-        
-        System.out.println("Enter the elements of the array:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
-        }
-        
-        int uniqueElement = findUnique(arr);
-        System.out.println("The unique element in the array is: " + uniqueElement);
-        
-        // Close the scanner to release resources
-        scanner.close();
-    }
+		while(n>0){
+          
+		  y=n%10;
+			ans=ans+y*x;
+
+			x=x*2;
+
+			n=n/10;
+
+
+		}
+
+		System.out.println(ans);
+
+	}
 }
 
 
-package Arrays;
+package BasicJavaProgram;
+
 import java.util.Scanner;
 
-public class FindDuplicate {
-    public static int duplicateNumber(int arr[]) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) {
-                    return arr[i];
-                }
-            }
-        }
-        return -1;
-    }
+public class SquareRoot {
+	public static void main(String[] args) {
+		Scanner s= new Scanner(System.in);
+        int n=s.nextInt();
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+		int i=1;
 
-        System.out.print("Enter the number of elements in the array: ");
-        int n = scanner.nextInt();
+		while(i*i<=n){
 
-        int[] arr = new int[n];
+           i++;
 
-        System.out.println("Enter the elements of the array:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
-        }
+		}
 
-        int duplicate = duplicateNumber(arr);
-        if (duplicate != -1) {
-            System.out.println("The duplicate number in the array is: " + duplicate);
-        } else {
-            System.out.println("There are no duplicate numbers in the array.");
-        }
+          i=i-1;
+		System.out.print(i);
 
-        // Close the scanner to release resources
-        scanner.close();
-    }
+
+
+	}
+
 }
 
