@@ -1,0 +1,32 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class RemoveConsecutiveDuplicate {
+    public static String removeConsecutiveDuplicates(String str) {
+        String ans = "";
+        int j = 0;
+        ans += str.charAt(0);
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) != ans.charAt(j)) {
+                ans += str.charAt(i);
+                j++;
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        String result = removeConsecutiveDuplicates(inputString);
+
+        System.out.println("String after removing consecutive duplicates: " + result);
+
+        scanner.close();
+    }
+}
+
