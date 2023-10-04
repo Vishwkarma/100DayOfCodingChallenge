@@ -1,0 +1,111 @@
+package Arrays;
+
+import java.util.Arrays;
+
+public class SecondSmallestAndSecondLeargest {
+	
+//	Time Complexity: O(N), We do two linear traversals in our array
+//
+//	Space Complexity: O(1)
+	
+	static private void getElements(int arr[],int n) {
+		if(n==0||n==1) {
+			System.out.println(-1);
+			System.out.println(" ");
+			System.out.print(-1);
+			System.out.print("\n");
+			
+			
+		}
+		int small =Integer.MAX_VALUE;
+		int second_small =Integer.MAX_VALUE;
+		int large= Integer.MIN_VALUE;
+		int second_large=Integer.MIN_VALUE;
+		int i=0;
+		
+		for( i=0;i<n;i++) {
+			small=Math.min(small, arr[i]);
+			large=Math.max(large, arr[i]);
+				
+			
+		}
+		for( i=0;i<n;i++) {
+			if(arr[i]<second_small && arr[i]!= small) {
+				second_small =arr[i];
+				
+			}
+			if (arr[i] > second_large && arr[i] != large)
+			{
+				second_large = arr[i];
+			}
+			
+		}
+		System.out.println("Second smallest is "+second_small);
+		System.out.println("Second largest is "+second_large);
+	}
+//		Brute-Force Approach
+	 //T.C : O(NlogN) S.C: O(1)
+//		Arrays.sort(arr);
+//		int small = arr[1];
+//		int large = arr[n-2];
+//		System.out.println("Second smallest is "+ small);
+//		System.out.println("Second largest is "+ large);
+//		
+//	}
+		
+	
+	public static void main(String[] args) {
+		int []arr = {1,2,4,6,7,8};
+		int n =arr.length;
+		getElements(arr,n);
+
+	}
+
+}
+
+package Arrays;
+
+import java.util.Arrays;
+
+public class LargestElementInArray {
+
+	public static void main(String[] args) {
+		
+		int arr1[]= {1,2,3,8,0};
+		System.out.println("The Largest element in the array is :" +sort(arr1));
+		
+		int arr2[]= {8,10,5,7,9};
+		System.out.println("The Largest element in the array is :"+ sort(arr2));	
+ 
+		
+		int arr3[]= {10,300,500,100,4};
+		System.out.println("The Largest element in the array is :"+ findLargest(arr3));
+		
+		
+	}
+	
+	//Optimal Approach T.C:O(N*log(N)) S.C:-O(n)
+	
+ private static int findLargest(int[] arr3) {
+	    int max = arr3[0];
+	    for(int i=0;i<arr3.length;i++) {
+	    	if(arr3[i]>max) {
+	    		
+	    		max =arr3[i];
+	    		
+	    	}
+	    	
+	    }
+		return max;
+	}
+ //Brute force Approach T.C:O(n) S.P :O(1)
+ 
+static int sort(int arr[]) {
+	 Arrays.sort(arr);
+	 return arr[arr.length-1];
+	 
+	 
+	 
+ }
+}
+
