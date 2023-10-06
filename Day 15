@@ -1,0 +1,88 @@
+package EasyCode;
+
+import java.util.Scanner;
+
+public class FehTOCel {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		  int  S= s.nextInt();
+		 int E=s.nextInt();
+	        int W=s.nextInt();
+	        
+	        int feh;
+	        
+	         while(S<=E)
+	         {
+	               
+	             
+	               feh=((5*(S-32))/9);
+	             
+	             
+	              System.out.println(S+" "+feh);
+	             
+	              S = S + W;
+	         
+	         }
+	     
+
+			
+		}
+
+}
+
+package EasyCode;
+
+import java.util.Scanner;
+
+public class Factors {
+
+	public static void main(String[] args) {
+		  Scanner  s= new Scanner(System.in);
+	        
+	        int n=s.nextInt();
+	        
+	        int i=2;
+	        
+	        
+	        while(i<=n/2){
+	            
+	            if(n%i==0){
+	                
+	                System.out.print(i+" ");
+	                
+	            }
+	            i=i+1;
+	        }
+
+	}
+
+}
+
+package EasyCode;
+
+import java.util.Scanner;
+
+public class PowerOfNumber {
+
+	public static void main(String[] args) {
+		 Scanner s = new Scanner(System.in);
+
+	      int x=s.nextInt();
+	      int n =s.nextInt();
+
+	    int pow=1;
+	    int i=0;
+
+
+	    while(i<n){
+
+	        pow=pow*x;
+	        i++;
+	  }
+
+	System.out.println(pow);
+	    }
+	}
+
+
