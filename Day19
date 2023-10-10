@@ -1,0 +1,68 @@
+package BasicJavaProgram;
+
+import java.util.Scanner;
+
+public class TermofAP {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+Scanner s=new Scanner(System.in);
+int n=s.nextInt();
+
+int count =1;
+int current =1;
+
+ while(count<=n){
+
+	 int num=3*current + 2;
+
+	 if(num%4!=0){
+		 System.out.print(num + " ");
+		 count++;
+
+	 }
+
+	 current ++;
+
+ }
+
+	}
+
+}
+
+
+package BasicJavaProgram;
+
+import java.util.Scanner;
+public class CheckNumberSequence {
+
+    public static void main(String[] args) {
+  Scanner s=new Scanner(System.in);
+        int current,count=2;
+        int n=s.nextInt();
+        int previous=s.nextInt();
+        boolean isDecreasing=true;
+        while(count<=n){
+            current=s.nextInt();
+            count++;
+            if(current==previous){
+                System.out.println("false");
+                return;   
+            }
+            if(current<previous){
+                if(isDecreasing==false){
+                    System.out.println("false");
+                    return;
+                }
+            }
+            else{
+                if(isDecreasing==true){
+                    isDecreasing=false;    
+                }
+                previous=current;
+            }
+        }
+        System.out.println("true");
+    }
+}
