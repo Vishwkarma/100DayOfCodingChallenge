@@ -1,0 +1,19 @@
+
+public class Solution {
+	
+
+		public static String minLengthWord(String input){
+String words[]=input.split(" ");
+	int smallestWordLen=Integer.MAX_VALUE;
+	String smallestWord=" ";
+	for(int i=0;i<words.length;i++){
+		String word=words[i];
+		int len =word.length();
+		if(len<smallestWordLen) {
+			smallestWordLen=len;
+			smallestWord=word;
+		}
+	}
+	return smallestWord;
+	}	
+}
