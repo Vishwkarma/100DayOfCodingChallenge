@@ -1,0 +1,208 @@
+
+/* Signature of four required functions is given in the code. You can create other functions as well if you need.
+*  Also you should submit your code even if you are not done with all the functions. 
+*/
+
+// Main used internally is shown here just for your reference.
+/*public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int degree1[] = new int[n];
+		for(int i = 0; i < n; i++){
+			degree1[i] = s.nextInt();
+		}
+		int coeff1[] = new int[n];
+		for(int i = 0; i < n; i++){
+			coeff1[i] = s.nextInt();
+		}
+		Polynomial first = new Polynomial();
+		for(int i = 0; i < n; i++){
+			first.setCoefficient(degree1[i],coeff1[i]);
+		}
+		n = s.nextInt();
+		int degree2[] = new int[n];
+		for(int i = 0; i < n; i++){
+			degree2[i] = s.nextInt();
+		}
+		 int coeff2[] = new int[n];
+		for(int i = 0; i < n; i++){
+			coeff2[i] = s.nextInt();
+		}
+		Polynomial second = new Polynomial();
+		for(int i = 0; i < n; i++){
+			second.setCoefficient(degree2[i],coeff2[i]);
+		}
+		int choice = s.nextInt();
+		Polynomial result;
+		switch(choice){
+		// Add
+		case 1: 
+			 result = first.add(second);
+			result.print();
+			break;
+		// Subtract	
+		case 2 :
+			 result = first.subtract(second);
+			result.print();
+			break;
+		// Multiply
+		case 3 :
+			 result = first.multiply(second);
+			result.print();
+			break;
+		}
+
+	}
+  */
+
+
+public class Polynomial {
+    private int arr1[];
+    private int arr2[];
+    private int index;
+    
+    public Polynomial(){
+        arr1 = new int[10];
+        arr2 = new int[10];
+        
+        index=0;
+    }
+    
+	public void setCoefficient(int degree, int coeff){
+        if(arr1.length<index+1){
+            int tem1[]=arr1;
+            int tem2[]=arr2;
+            
+            arr1=new int[tem1.length *2];
+            arr2=new int[tem1.length *2];
+            for(int i=0;i<tem1.length;i++){
+                arr1[i]=tem1[i];
+                arr2[i]=tem2[i];
+            }
+        }
+        
+       int i=0;
+        while(arr1[i]<degree){
+            if(index==i){
+                break;
+            }
+            i++;
+        }
+        
+        if(arr1[i]==degree){
+            arr2[i]+=coeff;
+            return;
+        }
+        
+        for(int j=index;j>i;j--){
+            arr1[j]=arr1[j-1];
+            arr2[j]=arr2[j-1];
+        }
+        
+        
+        arr1[i]=degree;
+        arr2[i]=coeff;
+        
+        index++;
+        
+	}
+    
+    
+	
+	// Prints all the terms(only terms with non zero coefficients are to be printed) in increasing order of degree. 
+	public void print(){
+		for(int i=0;i<index;i++){
+            System.out.print(arr2[i]+"x"+arr1[i]+" ");
+        }
+	}
+
+	
+	// Adds two polynomials and returns a new polynomial which has result
+	public Polynomial add(Polynomial p){
+        Polynomial re=new Polynomial();
+        int i=0;
+        int j=0;
+        
+        while(i<index && j<p.index){
+            if(arr1[i]==p.arr1[j]){
+                if(arr2[i]+p.arr2[j] !=0){
+                  re.setCoefficient(arr1[i],arr2[i]+p.arr2[j]);
+                }
+                i++;
+                j++;
+            }
+            else if(arr1[i]<p.arr1[j]){
+                re.setCoefficient(arr1[i],arr2[i]);
+                i++;
+            }
+            else{
+                re.setCoefficient(p.arr1[j],p.arr2[j]);
+                j++;
+            }
+        }
+        
+        while(i<index){
+            re.setCoefficient(arr1[i],arr2[i]);
+            i++;
+        }
+        
+        while(j<p.index){
+            re.setCoefficient(p.arr1[j],p.arr2[j]);
+            j++;
+        }
+        
+        return re;
+	}
+	
+	// Subtracts two polynomials and returns a new polynomial which has result
+	public Polynomial subtract(Polynomial p){
+		Polynomial re=new Polynomial();
+        
+        int i=0;
+        int j=0;
+        
+        while(i<index && j<p.index){
+            if(arr1[i]==p.arr1[j]){
+                if(arr2[i]-p.arr2[j] !=0){
+                  re.setCoefficient(arr1[i],arr2[i]-p.arr2[j]);
+                }
+                i++;
+                j++;
+            }
+            else if(arr1[i]<p.arr1[j]){
+                re.setCoefficient(arr1[i],arr2[i]);
+                i++;
+            }
+            else{
+                re.setCoefficient(p.arr1[j],-p.arr2[j]);
+                j++;
+            }
+        }
+        
+        while(i<index){
+            re.setCoefficient(arr1[i],arr2[i]);
+            i++;
+        }
+        
+        while(j<p.index){
+            re.setCoefficient(p.arr1[j],-p.arr2[j]);
+            j++;
+        }
+        
+        return re;
+	}
+	
+	// Multiply two polynomials and returns a new polynomial which has result
+	public Polynomial multiply(Polynomial p){
+		Polynomial re = new Polynomial();
+        
+        for(int i=0;i<index;i++){
+            for(int j=0;j<p.index;j++){
+                re.setCoefficient(arr1[i]+p.arr1[j],arr2[i]*p.arr2[j]);
+            }
+        }
+        
+        return re;
+   }
+    
+}
