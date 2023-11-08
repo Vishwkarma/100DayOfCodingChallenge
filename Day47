@@ -1,0 +1,45 @@
+
+// User function Template for Java
+
+class Solution {
+    public long count(int coins[], int N, int sum) {
+        long[][] dp=new long[N][sum+1];
+        // for(long[] i:dp) Arrays.fill(i,-1);
+        // return fun(coins,N-1,sum,dp);
+        for(int i=0;i<N;i++){
+            for(int j=0;j<=sum;j++){
+                if(i==0){
+                    if(j%coins[0]==0){
+                        dp[i][j]=1;
+                    }else{
+                        dp[i][j]=0;
+                    }
+                }else{
+                  long a=0;
+        if(coins[i]<=j){
+            a=dp[i][j-coins[i]];
+        }
+        long b=dp[i-1][j];
+        dp[i][j]=a+b;  
+                }
+            }
+        }
+        return dp[N-1][sum];
+    }
+    public long fun(int[] coins,int N,int sum,long[][] dp){
+        if(N==0){
+           if(sum%coins[0]==0){
+               return 1;
+           }else{
+               return 0;
+           }
+        }
+        if(dp[N][sum]!=-1) return dp[N][sum];
+        long a=0;
+        if(coins[N]<=sum){
+            a=fun(coins,N,sum-coins[N],dp);
+        }
+        long b=fun(coins,N-1,sum,dp);
+        return dp[N][sum]=a+b;
+    }
+}
