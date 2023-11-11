@@ -1,0 +1,75 @@
+import java.util.Arrays;
+public class solution {
+
+	public static int maximumProfit(int budget[]) {
+
+        // Write your code here
+        mergeSort(budget);
+        int max=0;
+        int out=0;
+        for(int i=0;i<budget.length;i++){
+            int temp= budget[i]*(budget.length-i);
+            if(max<temp){
+                max=temp;
+                out=budget[i];
+            }
+        }
+        return max;
+	}
+    public static void mergeSort(int[] input){
+        if(input.length<=1)
+        {
+            return;
+        }
+        int arr1[] = new int[input.length/2];
+        int arr2[] = new int[input.length-arr1.length];
+        for(int i=0;i<input.length/2;i++)
+        {
+            arr1[i] = input[i];
+        }
+        for(int i=input.length/2;i<input.length;i++)
+        {
+            arr2[i-input.length/2] = input[i];
+        }
+        mergeSort(arr1);
+        mergeSort(arr2);
+        merge(arr1,arr2,input);
+	}
+    public static void merge(int c[],int b[],int a[])
+    {
+        int i=0,j=0,k=0;
+        while(i<b.length&&j<c.length)
+        {
+            if(b[i]<=c[j])
+            {
+                a[k] = b[i];
+                i++;
+                k++;
+            }
+            else
+            {
+                a[k] = c[j];
+                j++;
+                k++;
+            }
+        }
+        if(i<b.length)
+        {
+            while(i<b.length)
+            {
+                a[k] = b[i];
+                i++;
+                k++;
+            }
+        }
+        if(j<c.length)
+        {
+            while(j<c.length)
+            {
+                a[k] = c[j];
+                j++;
+                k++;
+            }
+        }
+    }
+}
