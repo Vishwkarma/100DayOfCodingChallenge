@@ -1,0 +1,21 @@
+public class solution {
+
+	public static int convertStringToInt(String input){
+		// Write your code her
+        
+        if(input.length() == 1){
+            int b = input.charAt(0) - '0';
+            return b;
+        }
+        
+        double x = input.charAt(input.length()-1) - '0';
+        
+        double y = convertStringToInt(input.substring(0,input.length()-1));
+        
+        
+        x = x+y*10;
+        return (int)x;
+	}
+    
+    
+}
